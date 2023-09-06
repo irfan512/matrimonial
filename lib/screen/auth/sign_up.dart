@@ -6,6 +6,7 @@ import '../../config/colors.dart';
 import '../../provider/auth_provider.dart';
 import '../../utils/images.dart';
 import '../../widgets/custom_textfield.dart';
+import '../profileUpdate/widgets/salam_screen.dart';
 import 'email_login.dart';
 
 class Signup extends StatefulWidget {
@@ -175,20 +176,25 @@ class _SignupState extends State<Signup> {
                       ),
                       InkWell(
                         onTap: () async {
-                          log("TAPPPPPPP");
-                          if (_formKey.currentState!.validate()) {
-                            log("validateeeeeeeeeeeeeeeeeeeeeeeeeeee");
-                            Map<String, dynamic> mapData = {
-                              "name": fullname.text,
-                              "username": username.text,
-                              "email": email.text,
-                              "password": password.text,
-                              "password_confirm": confirmpass.text,
-                            };
-                            await Provider.of<AuthController>(context,
-                                    listen: false)
-                                .register(mapData: mapData, context: context);
-                          }
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context)=>SalamScreen(
+                                email:email.text,
+                              )));
+
+                          // log("TAPPPPPPP");
+                          // if (_formKey.currentState!.validate()) {
+                          //   log("validateeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                          //   Map<String, dynamic> mapData = {
+                          //     "name": fullname.text,
+                          //     "username": username.text,
+                          //     "email": email.text,
+                          //     "password": password.text,
+                          //     "password_confirm": confirmpass.text,
+                          //   };
+                          //   await Provider.of<AuthController>(context,
+                          //           listen: false)
+                          //       .register(mapData: mapData, context: context);
+                          // }
                         },
                         child: Container(
                           decoration: BoxDecoration(

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_seven.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_seven.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/utils/utils.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';

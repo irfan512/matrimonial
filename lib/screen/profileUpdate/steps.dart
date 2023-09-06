@@ -6,8 +6,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:sizer/sizer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:us_muslim_match/config/theme.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_five.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_one.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_five.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_one.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/utils/utils.dart';
 

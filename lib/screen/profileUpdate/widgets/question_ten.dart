@@ -5,7 +5,7 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/profile_image.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/profile_image.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/utils/utils.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';

@@ -9,6 +9,7 @@ import '../model/get_random_users.dart';
 import '../services/api_services.dart';
 import '../utils/loader.dart';
 
+
 class RandomUserProvider extends ChangeNotifier {
   bool check = false;
   bool internet = false;
@@ -20,6 +21,7 @@ class RandomUserProvider extends ChangeNotifier {
     dynamic res = await ApiClient.getApitCall(url: url, mapData: mapData);
     log(res);
     if (res["status"] == 200) {
+
       check = true;
       List<dynamic> jsonData = res['data'];
       randomuser = jsonData.map((user) {
@@ -27,6 +29,7 @@ class RandomUserProvider extends ChangeNotifier {
       }).toList();
       log("RandomUserrrrrrrrrrrrr${randomuser[1].firstName}");
       notifyListeners();
+
     } else if (res["status"] == 500) {
       Navigator.pop(context);
       toast("$res[message]");

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/card_design.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_three.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/card_design.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_three.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
 import 'package:us_muslim_match/utils/utils.dart';

@@ -14,10 +14,12 @@ import 'package:us_muslim_match/screen/auth/verification.dart';
 import 'package:us_muslim_match/screen/landing_page.dart';
 import 'package:us_muslim_match/screen/splash_screen.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/question_six.dart';
-import 'package:us_muslim_match/screen/steps/widgets/gender.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_one.dart';
-import 'screen/steps/steps.dart';
+import 'package:us_muslim_match/screen/profileUpdate/question_six.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/gender.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_one.dart';
+import 'provider/blocked_provider.dart';
+import 'provider/favourites_provider.dart';
+import 'screen/profileUpdate/steps.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => AuthController()),
           ChangeNotifierProvider(create: (context) => RandomUserProvider()),
           ChangeNotifierProvider(create: (context) => NotificationProvider()),
+          ChangeNotifierProvider(create: (context) => BlockedUserProvider()),
+          ChangeNotifierProvider(create: (context) => FavouriteUserProvider()),
         ],
         child: Sizer(builder: (context, orientation, deviceType) {
           return MaterialApp(

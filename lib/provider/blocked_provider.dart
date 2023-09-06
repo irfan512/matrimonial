@@ -14,21 +14,21 @@ class BlockedUserProvider extends ChangeNotifier {
   bool internet = false;
   List<RendomUsers> blockedUserlist = [];
 
-
-
+  
   Future<void> blockUsers({mapData, context}) async {
     String url = "blocked/get_all";
     dynamic res = await ApiClient.getApitCall(url: url, mapData: mapData);
     log(res);
+
     if (res["status"] == 200) {
       check = true;
       List<dynamic> jsonData = res['data'];
       blockedUserlist = jsonData.map((user) {
         return RendomUsers.fromJson(user);
       }).toList();
-      log("RandomUserrrrrrrrrrrrr${blockedUserlist[1].firstName}");
       notifyListeners();
     } else if (res["status"] == 500) {
+      check = false;
       Navigator.pop(context);
       toast("$res[message]");
       notifyListeners();
@@ -45,8 +45,6 @@ class BlockedUserProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
-
 
   Future blockAdd({mapData, context}) async {
     String url = "blocked/add";
@@ -75,8 +73,6 @@ class BlockedUserProvider extends ChangeNotifier {
     }
   }
 
-
-
   Future blockRemove({mapData, context, index}) async {
     String url = "blocked/remove";
     dynamic res = await ApiClient.getApitCall(url: url, mapData: mapData);
@@ -103,11 +99,8 @@ class BlockedUserProvider extends ChangeNotifier {
     }
   }
 
-
   removeUserAtIndex(index) {
     blockedUserlist.removeAt(index);
     notifyListeners();
   }
-
-
 }

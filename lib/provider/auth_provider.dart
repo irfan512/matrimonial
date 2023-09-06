@@ -88,9 +88,6 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
   // Logout api
 
   Future<void> logoutUser({required context}) async {

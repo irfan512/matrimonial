@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_four.dart';
-import 'package:us_muslim_match/utils/utils.dart';
+import 'package:us_muslim_match/screen/profileUpdate/question_six.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 
 import '../../../config/colors.dart';
+import '../../../utils/utils.dart';
 
-class QuestionThree extends StatefulWidget {
-  const QuestionThree({super.key});
+class QuestionFive extends StatefulWidget {
+  const QuestionFive({super.key});
 
   @override
-  State<QuestionThree> createState() => _QuestionThreeState();
+  State<QuestionFive> createState() => _QuestionFiveState();
 }
 
-class _QuestionThreeState extends State<QuestionThree> {
+class _QuestionFiveState extends State<QuestionFive> {
   final List<String> _list = [
-    "Marriage within a year",
-    "Marriage in 1-2 years",
-    "Marriage in 2-3 years",
-    "Marriage in 3-4 years",
+    "Very practising",
+    "Practising",
+    "Moderately practising",
+    "Not practising",
   ];
   String _selectedValue = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +30,12 @@ class _QuestionThreeState extends State<QuestionThree> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Utils.heading("When are you looking to get Married?"),
-                  20.sh,
+                  Utils.heading("How religious are you?"),
                   for (int i = 0; i < _list.length; i++) ...[
                     Utils.customRadioTile(
                         title: _list[i],
@@ -45,7 +44,7 @@ class _QuestionThreeState extends State<QuestionThree> {
                         funtion: (value) {
                           _selectedValue = value!;
                           setState(() {});
-                        })
+                        }),
                   ],
                 ],
               ),
@@ -59,7 +58,7 @@ class _QuestionThreeState extends State<QuestionThree> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionFour()));
+                            builder: (context) => QuesstionSix()));
                   },
                   child: Container(
                     decoration: BoxDecoration(

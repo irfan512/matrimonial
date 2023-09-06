@@ -27,6 +27,8 @@ class RequestUserProvider extends ChangeNotifier {
       log("RandomUserrrrrrrrrrrrr${requests[1].firstName}");
       notifyListeners();
     } else if (res["status"] == 500) {
+      check = false;
+
       Navigator.pop(context);
       toast("$res[message]");
       notifyListeners();

@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/question_six.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_four.dart';
+import 'package:us_muslim_match/utils/utils.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 
 import '../../../config/colors.dart';
-import '../../../utils/utils.dart';
 
-class QuestionFive extends StatefulWidget {
-  const QuestionFive({super.key});
+class QuestionThree extends StatefulWidget {
+  const QuestionThree({super.key});
 
   @override
-  State<QuestionFive> createState() => _QuestionFiveState();
+  State<QuestionThree> createState() => _QuestionThreeState();
 }
 
-class _QuestionFiveState extends State<QuestionFive> {
+class _QuestionThreeState extends State<QuestionThree> {
   final List<String> _list = [
-    "Very practising",
-    "Practising",
-    "Moderately practising",
-    "Not practising",
+    "Marriage within a year",
+    "Marriage in 1-2 years",
+    "Marriage in 2-3 years",
+    "Marriage in 3-4 years",
   ];
   String _selectedValue = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,12 +31,12 @@ class _QuestionFiveState extends State<QuestionFive> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Utils.heading("How religious are you?"),
+                  Utils.heading("When are you looking to get Married?"),
+                  20.sh,
                   for (int i = 0; i < _list.length; i++) ...[
                     Utils.customRadioTile(
                         title: _list[i],
@@ -44,7 +45,7 @@ class _QuestionFiveState extends State<QuestionFive> {
                         funtion: (value) {
                           _selectedValue = value!;
                           setState(() {});
-                        }),
+                        })
                   ],
                 ],
               ),
@@ -58,7 +59,7 @@ class _QuestionFiveState extends State<QuestionFive> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuesstionSix()));
+                            builder: (context) => QuestionFour()));
                   },
                   child: Container(
                     decoration: BoxDecoration(

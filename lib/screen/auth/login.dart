@@ -12,7 +12,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
@@ -167,11 +167,34 @@ class _LoginState extends State<Login> {
                             MaterialPageRoute(
                                 builder: (context) => EmailLogin()));
                       },
-                      child: const Text(
-                        'Continue With Email',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            border:
+                                Border.all(color: ColorConstants.primaryColor)),
+                        height: 45,
+                        width: 210,
+                        child: Row(
+                          children: const [
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Image(
+                              image: AssetImage(AppImages.email),
+                              height: 22,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              'Sign in With Email',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

@@ -1,11 +1,10 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_ten.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_ten.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/utils/utils.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
@@ -51,6 +50,8 @@ class _QuesstionNineState extends State<QuesstionNine> {
     // TODO: implement initState
     super.initState();
     getData();
+
+    log("eeeeeeeeeeeeeeeeeeeeee ${widget.selectedHobbies[1]}");
   }
 
   @override
@@ -90,16 +91,12 @@ class _QuesstionNineState extends State<QuesstionNine> {
                         overlayColor:
                             MaterialStateProperty.all(Colors.transparent),
                         onTap: () {
-  
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => Questionten(),
-      ),
-    );
-
-
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Questionten(),
+                            ),
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
