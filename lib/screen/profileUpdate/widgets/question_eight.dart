@@ -14,6 +14,21 @@ import '../../../config/colors.dart';
 import '../../../model/get_site_setting.dart';
 
 class QuestionEight extends StatefulWidget {
+
+String?profile_pic;
+String?gender;
+String?relationship;
+String?height;
+String?marriagePlain;
+String?prayer;
+String?religious_you;
+String?cityid;
+String?countryid;
+String?stateid;
+String?convert;
+QuestionEight({this.gender,this.convert,this.height,this.marriagePlain,this.prayer,this.profile_pic,this.relationship,this.religious_you,this.cityid,this.countryid,this.stateid});
+
+
   @override
   State<QuestionEight> createState() => _QuestionEightState();
 }
@@ -65,12 +80,27 @@ class _QuestionEightState extends State<QuestionEight> {
     return selectedHobbies.contains(hobby);
   }
 
-
   void _navigateToNextScreen() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => QuesstionNine(selectedHobbies: selectedHobbies),
+        builder: (context) => QuesstionNine(
+          selectedHobbies: selectedHobbies,
+convert:widget.convert,
+ cityid: widget.cityid,
+                                            countryid: widget.countryid,
+                                            stateid: widget.stateid,
+                                            profile_pic: widget.profile_pic,
+                                            gender: widget.gender,
+                                            relationship: widget.relationship,
+                                            height: widget.height,
+                                            marriagePlain: widget.marriagePlain,
+                                            prayer: widget.prayer,
+                                            religious_you: widget.religious_you,
+
+
+
+          ),
       ),
     );
   }
@@ -168,6 +198,7 @@ class _QuestionEightState extends State<QuestionEight> {
     );
   }
 }
+
 
 class NextScreen extends StatelessWidget {
   List selectedHobbies;

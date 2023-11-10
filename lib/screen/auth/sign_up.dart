@@ -176,25 +176,22 @@ class _SignupState extends State<Signup> {
                       ),
                       InkWell(
                         onTap: () async {
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (context)=>SalamScreen(
-                                email:email.text,
-                              )));
+                        
 
-                          // log("TAPPPPPPP");
-                          // if (_formKey.currentState!.validate()) {
-                          //   log("validateeeeeeeeeeeeeeeeeeeeeeeeeeee");
-                          //   Map<String, dynamic> mapData = {
-                          //     "name": fullname.text,
-                          //     "username": username.text,
-                          //     "email": email.text,
-                          //     "password": password.text,
-                          //     "password_confirm": confirmpass.text,
-                          //   };
-                          //   await Provider.of<AuthController>(context,
-                          //           listen: false)
-                          //       .register(mapData: mapData, context: context);
-                          // }
+                          log("TAPPPPPPP");
+                          if (_formKey.currentState!.validate()) {
+                            log("validateeeeeeeeeeeeeeeeeeeeeeeeeeee");
+                            Map<String, dynamic> mapData = {
+                              "name": fullname.text,
+                              "username": username.text,
+                              "email": email.text,
+                              "password": password.text,
+                              "password_confirm": confirmpass.text,
+                            };
+                            await Provider.of<AuthController>(context,
+                                    listen: false)
+                                .register(mapData: mapData, context: context,email: email.text);
+                          }
                         },
                         child: Container(
                           decoration: BoxDecoration(

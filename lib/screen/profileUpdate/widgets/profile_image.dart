@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
 import 'package:us_muslim_match/screen/profileUpdate/widgets/card_design.dart';
 import 'package:us_muslim_match/screen/profileUpdate/widgets/gender.dart';
@@ -171,8 +172,14 @@ class CoverImageState extends State<CoverImage> {
               highlightColor: Colors.transparent,
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Gender()));
+                if(
+                  profilepic!=null
+                ){
+ Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Gender(profile_pic:profilepic!.path)));
+                }else{
+toast("Select Profile Picture");
+                }
               },
               child: Container(
                 decoration: BoxDecoration(

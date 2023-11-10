@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
 import 'package:us_muslim_match/screen/profileUpdate/widgets/card_design.dart';
 import 'package:us_muslim_match/screen/profileUpdate/widgets/question_two.dart';
@@ -10,7 +11,9 @@ import '../../../config/colors.dart';
 import '../../../utils/images.dart';
 
 class QuestionOne extends StatefulWidget {
-  const QuestionOne({super.key});
+ String? profile_pic;
+  String?gender;
+   QuestionOne({this.gender,this.profile_pic});
 
   @override
   State<QuestionOne> createState() => _QuestionOneState();
@@ -18,10 +21,10 @@ class QuestionOne extends StatefulWidget {
 
 class _QuestionOneState extends State<QuestionOne> {
   final List<String> _list = [
-    "Never Married",
-    "Separated",
-    "Anulled",
     "Widowed",
+    "Separated",
+    "Divorced"
+    "Never Married",
     "Married",
   ];
   String _selectedValue = '';
@@ -64,8 +67,17 @@ class _QuestionOneState extends State<QuestionOne> {
               highlightColor: Colors.transparent,
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => QuestionTwo()));
+                if(_selectedValue!=''){
+  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QuestionTwo(
+profile_pic:widget.profile_pic,
+gender:widget.gender,
+relationship:_list.indexOf(_selectedValue).toString()
+                    )));
+                }
+              else{
+                toast("Select Marital Status");
+              }
               },
               child: Container(
                 decoration: BoxDecoration(

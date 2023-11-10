@@ -13,9 +13,20 @@ import '../../../config/colors.dart';
 import '../../../model/get_site_setting.dart';
 
 class QuesstionNine extends StatefulWidget {
-  List selectedHobbies;
+  List? selectedHobbies;
+  String?profile_pic;
+String?gender;
+String?relationship;
+String?height;
+String?marriagePlain;
+String?prayer;
+String?religious_you;
+String?cityid;
+String?countryid;
+String?stateid;
+String?convert;
+QuesstionNine({this.selectedHobbies,this.gender,this.convert,this.height,this.marriagePlain,this.prayer,this.profile_pic,this.relationship,this.religious_you,this.cityid,this.countryid,this.stateid});
 
-  QuesstionNine({required this.selectedHobbies});
 
   @override
   State<QuesstionNine> createState() => _QuesstionNineState();
@@ -51,7 +62,7 @@ class _QuesstionNineState extends State<QuesstionNine> {
     super.initState();
     getData();
 
-    log("eeeeeeeeeeeeeeeeeeeeee ${widget.selectedHobbies[1]}");
+    log("eeeeeeeeeeeeeeeeeeeeee ${widget.selectedHobbies![1]}");
   }
 
   @override
@@ -94,7 +105,23 @@ class _QuesstionNineState extends State<QuesstionNine> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Questionten(),
+                              builder: (context) => Questionten(
+sect:_selectedValue,
+
+          selectedHobbies: widget.selectedHobbies,
+convert:widget.convert,
+ cityid: widget.cityid,
+                                            countryid: widget.countryid,
+                                            stateid: widget.stateid,
+                                            profile_pic: widget.profile_pic,
+                                            gender: widget.gender,
+                                            relationship: widget.relationship,
+                                            height: widget.height,
+                                            marriagePlain: widget.marriagePlain,
+                                            prayer: widget.prayer,
+                                            religious_you: widget.religious_you,
+
+                              ),
                             ),
                           );
                         },

@@ -6,6 +6,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../config/app_constant.dart';
 import '../screen/landing_page.dart';
+import '../screen/profileUpdate/widgets/salam_screen.dart';
 import '../services/api_services.dart';
 import '../utils/loader.dart';
 
@@ -14,6 +15,7 @@ class AuthController extends ChangeNotifier {
   bool internet = false;
   Future<void> register(
       {required Map<String, dynamic> mapData,
+      required String email,
       required BuildContext context}) async {
     loading = true;
     internet = false;
@@ -24,9 +26,12 @@ class AuthController extends ChangeNotifier {
     if (res[AppConstant.apiStatus] == 200) {
       Navigator.pop(context);
       toast("Register Account Successfully");
+      
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => BottomBarTab()),
+          MaterialPageRoute(builder: (context) => SalamScreen(
+                                email:email,
+                              )),
           (route) => false);
 
       loading = false;

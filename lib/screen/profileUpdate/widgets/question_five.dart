@@ -8,7 +8,13 @@ import '../../../config/colors.dart';
 import '../../../utils/utils.dart';
 
 class QuestionFive extends StatefulWidget {
-  const QuestionFive({super.key});
+  String?profile_pic;
+String?gender;
+String?relationship;
+String?height;
+String?marriagePlain;
+String?prayer;
+   QuestionFive({this.gender,this.height,this.marriagePlain,this.prayer,this.profile_pic,this.relationship});
 
   @override
   State<QuestionFive> createState() => _QuestionFiveState();
@@ -58,7 +64,16 @@ class _QuestionFiveState extends State<QuestionFive> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuesstionSix()));
+                            builder: (context) => QuesstionSix(
+profile_pic:widget.profile_pic,
+gender:widget.gender,
+relationship:widget.relationship,
+height:widget.height,
+marriagePlain:widget.marriagePlain,
+prayer:widget.prayer,        
+religious_you:_selectedValue,
+                            )
+                            ));
                   },
                   child: Container(
                     decoration: BoxDecoration(

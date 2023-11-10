@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
 import 'package:us_muslim_match/screen/profileUpdate/widgets/question_five.dart';
 import 'package:us_muslim_match/utils/utils.dart';
@@ -8,7 +9,12 @@ import 'package:us_muslim_match/utils/extensions.dart';
 import '../../../config/colors.dart';
 
 class QuestionFour extends StatefulWidget {
-  const QuestionFour({super.key});
+ String?profile_pic;
+String?gender;
+String?relationship;
+String?height;
+String?marriagePlain;
+   QuestionFour({this.gender,this.height,this.marriagePlain,this.profile_pic,this.relationship});
 
   @override
   State<QuestionFour> createState() => _QuestionFourState();
@@ -77,10 +83,26 @@ class _QuestionFourState extends State<QuestionFour> {
                   highlightColor: Colors.transparent,
                   overlayColor: MaterialStateProperty.all(Colors.transparent),
                   onTap: () {
-                    Navigator.push(
+                    if(
+                      _selectedValue!=''
+                    ){
+ Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionFive()));
+                            builder: (context) => QuestionFive(
+
+profile_pic:widget.profile_pic,
+gender:widget.gender,
+relationship:widget.relationship,
+height:widget.height,
+marriagePlain:widget.marriagePlain,
+prayer:_selectedValue,
+                            )));
+                    }
+                    else{
+                      toast("Select Prayers");
+                    }
+                   
                   },
                   child: Container(
                     decoration: BoxDecoration(

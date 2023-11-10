@@ -11,8 +11,19 @@ import 'package:us_muslim_match/widgets/custom_text.dart';
 import '../../../config/colors.dart';
 
 class QuesstionSeven extends StatefulWidget {
-  const QuesstionSeven({super.key});
 
+String?profile_pic;
+String?gender;
+String?relationship;
+String?height;
+String?marriagePlain;
+String?prayer;
+String?religious_you;
+String?cityid;
+String?countryid;
+String?stateid;
+
+QuesstionSeven({this.gender,this.height,this.marriagePlain,this.prayer,this.profile_pic,this.relationship,this.religious_you,this.cityid,this.countryid,this.stateid});
   @override
   State<QuesstionSeven> createState() => _QuesstionSevenState();
 }
@@ -58,7 +69,20 @@ class _QuesstionSevenState extends State<QuesstionSeven> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionEight()));
+                            builder: (context) => QuestionEight(
+convert:_selectedValue,
+ cityid: widget.cityid,
+                                            countryid: widget.countryid,
+                                            stateid: widget.stateid,
+                                            profile_pic: widget.profile_pic,
+                                            gender: widget.gender,
+                                            relationship: widget.relationship,
+                                            height: widget.height,
+                                            marriagePlain: widget.marriagePlain,
+                                            prayer: widget.prayer,
+                                            religious_you: widget.religious_you,
+
+                            )));
                   },
                   child: Container(
                     decoration: BoxDecoration(
