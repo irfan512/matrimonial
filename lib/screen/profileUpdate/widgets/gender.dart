@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/card_design.dart';
-import 'package:us_muslim_match/screen/steps/widgets/profile_image.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_one.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_two.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/card_design.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/profile_image.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_one.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_two.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/utils/utils.dart';
@@ -12,7 +13,8 @@ import '../../../config/colors.dart';
 import '../../../utils/images.dart';
 
 class Gender extends StatefulWidget {
-  const Gender({super.key});
+  String?profile_pic;
+   Gender({this.profile_pic});
 
   @override
   State<Gender> createState() => GenderState();
@@ -103,16 +105,7 @@ class GenderState extends State<Gender> {
                 ],
               ),
 
-              // for (int i = 0; i < _list.length; i++) ...[
-              //   Utils.customRadioTile(
-              //       title: _list[i],
-              //       value: _list[i],
-              //       groupValue: _selectedValue,
-              //       funtion: (value) {
-              //         _selectedValue = value!;
-              //         setState(() {});
-              //       })
-              // ],
+             
             ],
           ),
           Center(
@@ -122,8 +115,17 @@ class GenderState extends State<Gender> {
               highlightColor: Colors.transparent,
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               onTap: () {
+                if(gen_sel!=""){
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => QuestionOne()));
+                    MaterialPageRoute(builder: (context) => QuestionOne(
+profile_pic:widget.profile_pic,
+gender:gen_sel=="male"?"1":"2"
+                    )));
+              }
+              else{
+                toast("Select Gender");
+                
+              }
               },
               child: Container(
                 decoration: BoxDecoration(

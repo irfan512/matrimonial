@@ -13,19 +13,22 @@ class FavouriteUserProvider extends ChangeNotifier {
   bool check = false;
   bool internet = false;
   List<RendomUsers> favUsers = [];
+
   Future<void> getFavourite({mapData, context}) async {
     String url = "favorite/get_all";
     dynamic res = await ApiClient.getApitCall(url: url, mapData: mapData);
     log(res);
+
     if (res["status"] == 200) {
       check = true;
       List<dynamic> jsonData = res['data'];
       favUsers = jsonData.map((user) {
         return RendomUsers.fromJson(user);
       }).toList();
-      log("RandomUserrrrrrrrrrrrr${favUsers[1].firstName}");
+
       notifyListeners();
     } else if (res["status"] == 500) {
+      check = false;
       Navigator.pop(context);
       toast("$res[message]");
       notifyListeners();
@@ -46,7 +49,6 @@ class FavouriteUserProvider extends ChangeNotifier {
   Future favAdd({mapData, context}) async {
     String url = "favorite/add";
     dynamic res = await ApiClient.getApitCall(url: url, mapData: mapData);
-
     log(res);
     if (res["status"] == 200) {
       check = true;
@@ -93,6 +95,11 @@ class FavouriteUserProvider extends ChangeNotifier {
       internet = false;
       notifyListeners();
     }
+  }
+
+  makeListEmpty() {
+    favUsers = [];
+    notifyListeners();
   }
 
   removeUserAtIndex(index) {

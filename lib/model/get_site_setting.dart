@@ -6,13 +6,19 @@ class GetSiteSetting {
   List<Religions>? familyValues;
   List<Religions>? familyStatuses;
   List<Religions>? educationLevel;
+  List<Religions>? interests;
+  List<Religions>?countries;
 
   GetSiteSetting(
+
+
       {this.religions,
       this.priorities,
+      this.countries,
       this.professions,
       this.sects,
       this.familyValues,
+      this.interests,
       this.familyStatuses,
       this.educationLevel});
 
@@ -27,6 +33,18 @@ class GetSiteSetting {
       priorities = <Religions>[];
       json['priorities'].forEach((v) {
         priorities!.add(new Religions.fromJson(v));
+      });
+    }
+        if (json['countries'] != null) {
+      countries = <Religions>[];
+      json['countries'].forEach((v) {
+        countries!.add(new Religions.fromJson(v));
+      });
+    }
+    if (json['interests'] != null) {
+      interests = <Religions>[];
+      json['interests'].forEach((v) {
+        interests!.add(new Religions.fromJson(v));
       });
     }
     if (json['professions'] != null) {
@@ -71,6 +89,12 @@ class GetSiteSetting {
     }
     if (this.professions != null) {
       data['professions'] = this.professions!.map((v) => v.toJson()).toList();
+    }
+     if (this.countries != null) {
+      data['countries'] = this.countries!.map((v) => v.toJson()).toList();
+    }
+    if (this.interests != null) {
+      data['interests'] = this.interests!.map((v) => v.toJson()).toList();
     }
     if (this.sects != null) {
       data['sects'] = this.sects!.map((v) => v.toJson()).toList();

@@ -1,7 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:us_muslim_match/provider/favourites_provider.dart';
+import 'package:us_muslim_match/utils/extensions.dart';
 
 import '../../config/colors.dart';
 import '../../provider/blocked_provider.dart';
@@ -15,143 +18,113 @@ class Favourite extends StatefulWidget {
 
 class _FavouriteState extends State<Favourite> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<FavouriteUserProvider>().makeListEmpty();
+    context.read<FavouriteUserProvider>().getFavourite(context: context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Consumer<FavouriteUserProvider>(builder: (context, value, child) {
-      return ListView.builder(
-          itemCount: value.favUsers.length,
-          itemBuilder: (context, index) {
-            return Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: value.check == true
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+      return Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: value.favUsers.isNotEmpty && value.check == true
+              ? SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Wrap(
+                        spacing: MediaQuery.of(context).size.width * .05,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        alignment: WrapAlignment.center,
                         children: [
-                          Container(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 50,
-                                      width: 60,
-                                      decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.black,
-                                          image: DecorationImage(
-                                              image: NetworkImage(
-                                            // blockeduser[index]
-                                            //     .avatar
-                                            //     .toString()
-                                            "",
-                                          ))),
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          "",
-                                          // blockeduser[index]
-                                          //     .username
-                                          //     .toString(),
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-
-//                                             blockeduser[index].verified=="1"
-// ?verified():SizedBox()
-                                      ],
-                                    ),
-                                  ],
+                          for (int i = 0; i < value.favUsers.length; i++) ...[
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Container(
+                                height: 240,
+                                width: MediaQuery.of(context).size.width * .43,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
                                 ),
-                                Container(
-                                  width: 90,
-                                  height: 30,
-                                  child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8)),
-                                          primary: ColorConstants.brightGreen),
-                                      onPressed: () {
-                                        showDialog<bool>(
-                                          barrierDismissible: false,
-                                          context: context,
-                                          builder: (context) {
-                                            return CupertinoAlertDialog(
-                                              title: const Text(
-                                                  'Are you sure you want to unblock this user?'),
-                                              actions: [
-                                                CupertinoDialogAction(
-                                                  isDefaultAction: true,
-                                                  isDestructiveAction: true,
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Stack(
+                                    fit: StackFit.expand,
+                                    children: [
+                                      Image.asset(
+                                        "assets/images/user1.jpg",
+                                        fit: BoxFit.cover,
+                                      ),
+                                      BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaX: 10, sigmaY: 10),
+                                        child: Container(
+                                          color: Colors.black.withOpacity(0.3),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                const Text(
+                                                  "Mariyum  25",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w600),
                                                 ),
-                                                // const SizedBox(
-                                                //   width: 10,
-                                                // ),
-                                                CupertinoDialogAction(
-                                                  isDestructiveAction: true,
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
+                                                10.sh,
+                                                const Text(
+                                                  "Pakistan",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 13),
                                                 ),
                                               ],
-                                            );
-                                          },
-                                        );
-                                      },
-                                      child: Text(
-                                        "Unblock",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            color: ColorConstants.brightGreen,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600),
-                                      )),
+                                            ),
+                                            Icon(
+                                              Icons.favorite,
+                                              color: Colors.red.shade300,
+                                              size: 35,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ]
                         ],
-                      )
-                    : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Text("People you add favourite will appear here"),
-                        ],
-                      ));
-          });
+                      ),
+                    ],
+                  ),
+                )
+              : value.favUsers.isEmpty && value.check == true
+                  ? const Center(
+                      child: Text("People you add favourite will appear here"),
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(
+                      color: ColorConstants.primaryColor,
+                    )));
     }));
   }
 }
-
-
-//  Center(
-//         child: Text("People you add favourite will appear here"),
-//       ),

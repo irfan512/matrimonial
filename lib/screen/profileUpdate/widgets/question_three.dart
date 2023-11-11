@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_four.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_four.dart';
 import 'package:us_muslim_match/utils/utils.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
 import 'package:us_muslim_match/utils/extensions.dart';
@@ -8,8 +8,12 @@ import 'package:us_muslim_match/utils/extensions.dart';
 import '../../../config/colors.dart';
 
 class QuestionThree extends StatefulWidget {
-  const QuestionThree({super.key});
-
+  String? profile_pic;
+  String? gender;
+  String? relationship;
+  String? height;
+  QuestionThree(
+      {this.gender, this.profile_pic, this.relationship, this.height});
   @override
   State<QuestionThree> createState() => _QuestionThreeState();
 }
@@ -59,7 +63,13 @@ class _QuestionThreeState extends State<QuestionThree> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionFour()));
+                            builder: (context) => QuestionFour(
+                                  profile_pic: widget.profile_pic,
+                                  gender: widget.gender,
+                                  relationship: widget.relationship,
+                                  height: widget.height,
+                                  marriagePlain: _selectedValue,
+                                )));
                   },
                   child: Container(
                     decoration: BoxDecoration(

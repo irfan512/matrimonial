@@ -23,8 +23,7 @@ class _ProposalSentState extends State<ProposalSent> {
         padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * .03, vertical: 12),
         child: 
-        
-        SingleChildScrollView(
+         SingleChildScrollView(
           child: Column(
             children: [
               Wrap(
@@ -104,6 +103,11 @@ class _ProposalSentState extends State<ProposalSent> {
             ],
           ),
         ),
+   
+   
+   
+   
+   
       ),
     );
   }

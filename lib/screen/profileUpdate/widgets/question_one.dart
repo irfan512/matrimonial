@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/card_design.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_three.dart';
-import 'package:us_muslim_match/utils/extensions.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/card_design.dart';
+import 'package:us_muslim_match/screen/profileUpdate/widgets/question_two.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
+import 'package:us_muslim_match/utils/extensions.dart';
 import 'package:us_muslim_match/utils/utils.dart';
 
 import '../../../config/colors.dart';
+import '../../../utils/images.dart';
 
-class QuestionTwo extends StatefulWidget {
-  const QuestionTwo({super.key});
+class QuestionOne extends StatefulWidget {
+ String? profile_pic;
+  String?gender;
+   QuestionOne({this.gender,this.profile_pic});
 
   @override
-  State<QuestionTwo> createState() => _QuestionTwoState();
+  State<QuestionOne> createState() => _QuestionOneState();
 }
 
-class _QuestionTwoState extends State<QuestionTwo> {
+class _QuestionOneState extends State<QuestionOne> {
   final List<String> _list = [
-    "122 cm  .  4'1\"",
-    "124 cm  .  4'2\"",
-    "127 cm  .  4'3\"",
-    "130 cm  .  4'4\"",
-    "130 cm  .  4'5\"",
+    "Widowed",
+    "Separated",
+    "Divorced"
+    "Never Married",
+    "Married",
   ];
-  String _selectedValue = "";
+  String _selectedValue = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +46,8 @@ class _QuestionTwoState extends State<QuestionTwo> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               20.sh,
-              Utils.heading("How tall are you?"),
+              // customText("Whats your material staus", fontSize: 10.sp,fontWeight: FontWeight.w600),
+              Utils.heading("What's your marital status?"),
               for (int i = 0; i < _list.length; i++) ...[
                 Utils.customRadioTile(
                     title: _list[i],
@@ -51,7 +56,7 @@ class _QuestionTwoState extends State<QuestionTwo> {
                     funtion: (value) {
                       _selectedValue = value!;
                       setState(() {});
-                    }),
+                    })
               ],
             ],
           ),
@@ -62,8 +67,17 @@ class _QuestionTwoState extends State<QuestionTwo> {
               highlightColor: Colors.transparent,
               overlayColor: MaterialStateProperty.all(Colors.transparent),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => QuestionThree()));
+                if(_selectedValue!=''){
+  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QuestionTwo(
+profile_pic:widget.profile_pic,
+gender:widget.gender,
+relationship:_list.indexOf(_selectedValue).toString()
+                    )));
+                }
+              else{
+                toast("Select Marital Status");
+              }
               },
               child: Container(
                 decoration: BoxDecoration(

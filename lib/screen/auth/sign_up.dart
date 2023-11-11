@@ -6,6 +6,7 @@ import '../../config/colors.dart';
 import '../../provider/auth_provider.dart';
 import '../../utils/images.dart';
 import '../../widgets/custom_textfield.dart';
+import '../profileUpdate/widgets/salam_screen.dart';
 import 'email_login.dart';
 
 class Signup extends StatefulWidget {
@@ -175,6 +176,8 @@ class _SignupState extends State<Signup> {
                       ),
                       InkWell(
                         onTap: () async {
+                        
+
                           log("TAPPPPPPP");
                           if (_formKey.currentState!.validate()) {
                             log("validateeeeeeeeeeeeeeeeeeeeeeeeeeee");
@@ -187,7 +190,7 @@ class _SignupState extends State<Signup> {
                             };
                             await Provider.of<AuthController>(context,
                                     listen: false)
-                                .register(mapData: mapData, context: context);
+                                .register(mapData: mapData, context: context,email: email.text);
                           }
                         },
                         child: Container(

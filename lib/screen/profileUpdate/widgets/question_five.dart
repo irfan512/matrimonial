@@ -1,24 +1,32 @@
-import 'dart:developer';
-
-import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:us_muslim_match/screen/steps/widgets/question_eight.dart';
-import 'package:us_muslim_match/utils/extensions.dart';
-import 'package:us_muslim_match/utils/utils.dart';
+import 'package:us_muslim_match/screen/profileUpdate/question_six.dart';
 import 'package:us_muslim_match/widgets/custom_text.dart';
+import 'package:us_muslim_match/utils/extensions.dart';
 
 import '../../../config/colors.dart';
+import '../../../utils/utils.dart';
 
-class QuesstionSeven extends StatefulWidget {
-  const QuesstionSeven({super.key});
+class QuestionFive extends StatefulWidget {
+  String?profile_pic;
+String?gender;
+String?relationship;
+String?height;
+String?marriagePlain;
+String?prayer;
+   QuestionFive({this.gender,this.height,this.marriagePlain,this.prayer,this.profile_pic,this.relationship});
 
   @override
-  State<QuesstionSeven> createState() => _QuesstionSevenState();
+  State<QuestionFive> createState() => _QuestionFiveState();
 }
 
-class _QuesstionSevenState extends State<QuesstionSeven> {
-  final List<String> _list = ["Yes", "No"];
+class _QuestionFiveState extends State<QuestionFive> {
+  final List<String> _list = [
+    "Very practising",
+    "Practising",
+    "Moderately practising",
+    "Not practising",
+  ];
   String _selectedValue = '';
   @override
   Widget build(BuildContext context) {
@@ -33,9 +41,7 @@ class _QuesstionSevenState extends State<QuesstionSeven> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  customText("Are you a Convert/Revert",
-                      fontWeight: FontWeight.w800, fontSize: 17.sp),
-                  20.sh,
+                  Utils.heading("How religious are you?"),
                   for (int i = 0; i < _list.length; i++) ...[
                     Utils.customRadioTile(
                         title: _list[i],
@@ -44,7 +50,7 @@ class _QuesstionSevenState extends State<QuesstionSeven> {
                         funtion: (value) {
                           _selectedValue = value!;
                           setState(() {});
-                        })
+                        }),
                   ],
                 ],
               ),
@@ -58,7 +64,16 @@ class _QuesstionSevenState extends State<QuesstionSeven> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuestionEight()));
+                            builder: (context) => QuesstionSix(
+profile_pic:widget.profile_pic,
+gender:widget.gender,
+relationship:widget.relationship,
+height:widget.height,
+marriagePlain:widget.marriagePlain,
+prayer:widget.prayer,        
+religious_you:_selectedValue,
+                            )
+                            ));
                   },
                   child: Container(
                     decoration: BoxDecoration(
